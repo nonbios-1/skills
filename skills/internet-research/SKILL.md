@@ -27,7 +27,7 @@ You need API credentials for:
 Set credentials as environment variables:
 ```bash
 export SEARCHAPI_KEY="your_key_here"
-export JINA_TOKEN="your_token_here"
+export JINA_API_KEY="your_token_here"
 ```
 
 ## Basic Commands
@@ -45,7 +45,7 @@ jq '.organic_results[0:5] | .[] | {title, link, snippet}' results.json
 ### Get Clean Content with Jina
 ```bash
 curl -s "https://r.jina.ai/URL_HERE" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" > content.txt
 ```
 
@@ -62,7 +62,7 @@ q=topic+site:github.com
 Use `old.reddit.com` for cleaner, bot-friendly structure:
 ```bash
 curl -s "https://r.jina.ai/https://old.reddit.com/r/subreddit/comments/ID/" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text"
 ```
 
@@ -100,7 +100,7 @@ jq '.organic_results[0:5] | .[] | {title, link}' search.json
 # 4. Get content from first result
 URL=$(jq -r '.organic_results[0].link' search.json)
 curl -s "https://r.jina.ai/${URL}" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" > article.txt
 
 # 5. Analyze the content

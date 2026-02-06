@@ -120,7 +120,7 @@ curl -s "https://r.jina.ai/URL" \
 #### Text Format
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text"
 ```
 Returns clean, plain text content.
@@ -128,7 +128,7 @@ Returns clean, plain text content.
 #### Markdown Format
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: markdown"
 ```
 Returns content in Markdown format with preserved structure.
@@ -136,7 +136,7 @@ Returns content in Markdown format with preserved structure.
 #### HTML Format
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: html"
 ```
 Returns cleaned HTML content.
@@ -144,7 +144,7 @@ Returns cleaned HTML content.
 #### JSON Format
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: json"
 ```
 Returns structured JSON with metadata.
@@ -154,7 +154,7 @@ Returns structured JSON with metadata.
 #### Target Specific Content
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" \
   -H "X-Target-Selector: article.main-content"
 ```
@@ -162,7 +162,7 @@ curl -s "https://r.jina.ai/https://example.com" \
 #### Remove Unwanted Elements
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" \
   -H "X-Remove-Selector: nav,footer,.sidebar,.ads"
 ```
@@ -170,7 +170,7 @@ curl -s "https://r.jina.ai/https://example.com" \
 #### Wait for Dynamic Content
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" \
   -H "X-Wait-For-Selector: .loaded-content"
 ```
@@ -178,7 +178,7 @@ curl -s "https://r.jina.ai/https://example.com" \
 #### Include Summaries
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: json" \
   -H "X-With-Links-Summary: true" \
   -H "X-With-Images-Summary: true"
@@ -361,7 +361,7 @@ cat urls.txt | xargs -I {} -P 3 bash -c 'process_url "{}"'
 ```bash
 # Temporary (current session)
 export SEARCHAPI_KEY="your_key"
-export JINA_TOKEN="your_token"
+export JINA_API_KEY="your_token"
 
 # Permanent (add to ~/.bashrc or ~/.zshrc)
 echo 'export SEARCHAPI_KEY="your_key"' >> ~/.bashrc
@@ -456,11 +456,11 @@ exit 3
 curl -s "https://www.searchapi.io/api/v1/search?engine=google&api_key=${SEARCHAPI_KEY}&q=QUERY" | jq '.'
 
 # Extract content
-curl -s "https://r.jina.ai/URL" -H "Authorization: Bearer ${JINA_TOKEN}" -H "X-Return-Format: text"
+curl -s "https://r.jina.ai/URL" -H "Authorization: Bearer ${JINA_API_KEY}" -H "X-Return-Format: text"
 
 # Get URLs from search
 jq -r '.organic_results[].link' search.json
 
 # Process multiple URLs
-cat urls.txt | while read url; do curl -s "https://r.jina.ai/$url" -H "Authorization: Bearer ${JINA_TOKEN}"; sleep 2; done
+cat urls.txt | while read url; do curl -s "https://r.jina.ai/$url" -H "Authorization: Bearer ${JINA_API_KEY}"; sleep 2; done
 ```

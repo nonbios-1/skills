@@ -53,7 +53,7 @@ jq '.knowledge_graph' search_results.json
 
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" > content.txt
 ```
 
@@ -62,17 +62,17 @@ curl -s "https://r.jina.ai/https://example.com" \
 ```bash
 # Markdown format (preserves structure)
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: markdown" > content.md
 
 # HTML format (clean HTML)
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: html" > content.html
 
 # JSON format (structured data)
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: json" > content.json
 ```
 
@@ -81,19 +81,19 @@ curl -s "https://r.jina.ai/https://example.com" \
 ```bash
 # Target specific CSS selector
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" \
   -H "X-Target-Selector: article.main-content" > article.txt
 
 # Remove specific elements
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" \
   -H "X-Remove-Selector: nav,footer,.ads" > clean_content.txt
 
 # Set timeout
 curl -s --max-time 30 "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" > content.txt
 ```
 
@@ -125,7 +125,7 @@ counter=1
 while IFS= read -r url; do
   echo "Extracting content from: $url"
   curl -s "https://r.jina.ai/$url" \
-    -H "Authorization: Bearer ${JINA_TOKEN}" \
+    -H "Authorization: Bearer ${JINA_API_KEY}" \
     -H "X-Return-Format: markdown" > "$OUTPUT_DIR/article_${counter}.md"
   counter=$((counter + 1))
   sleep 2  # Rate limiting
@@ -154,7 +154,7 @@ jq -r '.organic_results[] | select(.link | contains("reddit.com")) | .link' redd
 # Extract content from first thread
 FIRST_URL=$(head -1 reddit_urls.txt)
 curl -s "https://r.jina.ai/$FIRST_URL" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: markdown" > reddit_thread.md
 
 echo "Reddit research complete!"
@@ -179,7 +179,7 @@ for url in "${COMPETITORS[@]}"; do
   
   echo "Analyzing: $url"
   curl -s "https://r.jina.ai/$url" \
-    -H "Authorization: Bearer ${JINA_TOKEN}" \
+    -H "Authorization: Bearer ${JINA_API_KEY}" \
     -H "X-Return-Format: markdown" > "competitor_analysis/${filename}.md"
   
   sleep 2
@@ -226,7 +226,7 @@ search_with_cache "best+practices+python"
 ```bash
 # Add delays between requests
 for url in "${urls[@]}"; do
-  curl -s "https://r.jina.ai/$url" -H "Authorization: Bearer ${JINA_TOKEN}" > output.txt
+  curl -s "https://r.jina.ai/$url" -H "Authorization: Bearer ${JINA_API_KEY}" > output.txt
   sleep 2  # Wait 2 seconds between requests
 done
 ```
@@ -236,7 +236,7 @@ done
 ```bash
 # Check HTTP status codes
 response=$(curl -s -w "\n%{http_code}" "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}")
+  -H "Authorization: Bearer ${JINA_API_KEY}")
 
 http_code=$(echo "$response" | tail -n1)
 content=$(echo "$response" | head -n-1)
@@ -270,11 +270,11 @@ Always prefer `old.reddit.com` over `www.reddit.com` for better content extracti
 ```bash
 # Good
 curl -s "https://r.jina.ai/https://old.reddit.com/r/programming/comments/xyz" \
-  -H "Authorization: Bearer ${JINA_TOKEN}"
+  -H "Authorization: Bearer ${JINA_API_KEY}"
 
 # Avoid
 curl -s "https://r.jina.ai/https://www.reddit.com/r/programming/comments/xyz" \
-  -H "Authorization: Bearer ${JINA_TOKEN}"
+  -H "Authorization: Bearer ${JINA_API_KEY}"
 ```
 
 ### 5. Batch Processing
@@ -289,7 +289,7 @@ cat "$urls_file" | xargs -I {} -P 3 bash -c '
   url="{}"
   filename=$(echo "$url" | md5sum | cut -d" " -f1)
   curl -s "https://r.jina.ai/$url" \
-    -H "Authorization: Bearer $JINA_TOKEN" \
+    -H "Authorization: Bearer $JINA_API_KEY" \
     -H "X-Return-Format: markdown" > "'$output_dir'/${filename}.md"
   sleep 1
 '

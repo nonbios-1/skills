@@ -71,7 +71,7 @@ curl is typically pre-installed on most systems.
 
 ```bash
 export SEARCHAPI_KEY="your_searchapi_key_here"
-export JINA_TOKEN="your_jina_token_here"
+export JINA_API_KEY="your_jina_token_here"
 ```
 
 ### Permanent Setup
@@ -81,14 +81,14 @@ Add to your shell configuration file:
 **For Bash (~/.bashrc):**
 ```bash
 echo 'export SEARCHAPI_KEY="your_searchapi_key_here"' >> ~/.bashrc
-echo 'export JINA_TOKEN="your_jina_token_here"' >> ~/.bashrc
+echo 'export JINA_API_KEY="your_jina_token_here"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
 **For Zsh (~/.zshrc):**
 ```bash
 echo 'export SEARCHAPI_KEY="your_searchapi_key_here"' >> ~/.zshrc
-echo 'export JINA_TOKEN="your_jina_token_here"' >> ~/.zshrc
+echo 'export JINA_API_KEY="your_jina_token_here"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -96,7 +96,7 @@ source ~/.zshrc
 
 ```bash
 echo $SEARCHAPI_KEY
-echo $JINA_TOKEN
+echo $JINA_API_KEY
 ```
 
 Both should display your API credentials.
@@ -115,7 +115,7 @@ curl -s "https://www.searchapi.io/api/v1/search?engine=google&api_key=${SEARCHAP
 
 ```bash
 curl -s "https://r.jina.ai/https://example.com" \
-  -H "Authorization: Bearer ${JINA_TOKEN}" \
+  -H "Authorization: Bearer ${JINA_API_KEY}" \
   -H "X-Return-Format: text" | head -5
 ```
 
@@ -175,7 +175,7 @@ You should see `internet-research-skill` in the list.
 
 **Solution:**
 - Verify your Jina token starts with `jina_`
-- Check token is correctly set: `echo $JINA_TOKEN`
+- Check token is correctly set: `echo $JINA_API_KEY`
 - Ensure Bearer token format is correct in curl command
 
 ### Issue: "Rate limit exceeded"

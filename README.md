@@ -1,10 +1,10 @@
 # Skills Repository
 
-This repository contains custom skills for Claude AI, organized following the [Agent Skills specification](https://agentskills.io).
+This repository contains custom skills built by **nonbios** for use in **nonbios AI coding agents**. These skills follow the [Agent Skills specification](https://agentskills.io) for wider compatibility and can be used with other AI coding applications including Claude AI, Cursor, and any compatible AI development tools.
 
 ## What are Skills?
 
-Skills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. Each skill teaches Claude how to complete specific tasks in a repeatable way.
+Skills are folders of instructions, scripts, and resources that AI coding agents load dynamically to improve performance on specialized tasks. Each skill teaches the AI how to complete specific tasks in a repeatable way. These skills are designed for nonbios but are compatible with Claude AI and other AI development tools that support the Agent Skills specification.
 
 ## Repository Structure
 
@@ -49,6 +49,15 @@ Conduct comprehensive internet research using SearchAPI for Google searches and 
 
 ## Using Skills
 
+### In nonbios
+
+Simply reference the skill in your conversation with nonbios AI agents. The agent will load and apply the skill instructions dynamically.
+
+Example:
+```
+Use the internet-research skill to find information about [topic]
+```
+
 ### In Claude Code
 
 1. Register this repository as a plugin marketplace:
@@ -64,6 +73,10 @@ Conduct comprehensive internet research using SearchAPI for Google searches and 
 ### In Claude.ai
 
 Skills can be loaded by referencing the SKILL.md file in your conversations.
+
+### In Other Compatible AI Tools
+
+Any AI coding application that supports the Agent Skills specification can use these skills by loading the SKILL.md files.
 
 ### Via API
 
@@ -98,9 +111,10 @@ This repository is licensed under the Apache 2.0 License. See [LICENSE](LICENSE)
 
 ## Resources
 
-- [Agent Skills Specification](https://agentskills.io)
-- [Anthropic Skills Repository](https://github.com/anthropics/skills)
-- [Claude Documentation](https://docs.anthropic.com)
+- [nonbios](https://nonbios.ai) - AI coding agents platform
+- [Agent Skills Specification](https://agentskills.io) - Standard format for AI skills
+- [Anthropic Skills Repository](https://github.com/anthropics/skills) - Reference implementation
+- [Claude Documentation](https://docs.anthropic.com) - Claude AI documentation
 
 ## Disclaimer
 

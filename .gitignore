@@ -1,0 +1,32 @@
+# API Keys and Secrets
+*.key
+.env
+.env.local
+secrets/
+
+# Output and Cache Files
+research_output/
+cache/
+*.json
+*.txt
+*.log
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Keep example output structure but ignore content
+!examples/*.sh
+!docs/*.md

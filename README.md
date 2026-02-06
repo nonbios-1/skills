@@ -51,9 +51,13 @@ Conduct comprehensive internet research using SearchAPI for Google searches and 
 
 ### In nonbios
 
-Simply reference the skill in your conversation with nonbios AI agents. The agent will load and apply the skill instructions dynamically.
+To install this skill in nonbios, prompt the AI agent to learn from the GitHub repository:
 
-Example:
+```
+Learn skill from https://raw.githubusercontent.com/nonbios-1/skills/main/skills/internet-research/SKILL.md
+```
+
+Once learned, you can use the skill in your conversations:
 ```
 Use the internet-research skill to find information about [topic]
 ```

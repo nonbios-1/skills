@@ -47,7 +47,8 @@ Examples:
 
 // Parse options
 const options = {
-  format: 'A4',
+  width: '1920px',
+  height: '1080px',
   landscape: false,
   printBackground: true,
   margin: {},
